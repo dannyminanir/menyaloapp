@@ -1,6 +1,6 @@
 import Button from '../../components/Button';
 import InPuts from '../../components/InPuts';
-import { FcGoogle } from 'react-icons/fc';
+// import { FcGoogle } from 'react-icons/fc';
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import LOGO_new from '../../assets/Logodark.png';
@@ -22,38 +22,38 @@ export default function LoginPage() {
   const [login] = useLoginMutation();
   const [loginwithgoogle] = useLoginwithgoogleMutation();
 
-  const handleGoogleLogin = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      const idToken = (tokenResponse as unknown as { credential?: string }).credential ?? '';
-      try {
-        // Type assertion for backend response
-        const res = (await loginwithgoogle({ idToken }).unwrap()) as { token: string };
-        localStorage.setItem('token', res.token);
-        console.log('Google token', res.token);
-        toast.success('Login successful!', { position: 'top-right' });
+  // const _handleGoogleLogin = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     const idToken = (tokenResponse as unknown as { credential?: string }).credential ?? '';
+  //     try {
+  //       // Type assertion for backend response
+  //       const res = (await loginwithgoogle({ idToken }).unwrap()) as { token: string };
+  //       localStorage.setItem('token', res.token);
+  //       console.log('Google token', res.token);
+  //       toast.success('Login successful!', { position: 'top-right' });
 
-        // Type assertion for decoded JWT
-        const decoded = jwtDecode(res.token) as { role?: string };
-        const role = decoded.role;
-        console.log('Decoded role:', role);
+  //       // Type assertion for decoded JWT
+  //       const decoded = jwtDecode(res.token) as { role?: string };
+  //       const role = decoded.role;
+  //       console.log('Decoded role:', role);
 
-        setTimeout(() => {
-          if (role === 'citizen') navigate(`/feed#token=${res.token}`);
-          else if (role === 'law-firm') navigate('/dashboard');
-          else if (role === 'organization') navigate('/organization-dashboard');
-          else navigate('/feed');
-        }, 1500);
-      } catch (err) {
-        console.error('Google login error:', err);
+  //       setTimeout(() => {
+  //         if (role === 'citizen') navigate(`/feed#token=${res.token}`);
+  //         else if (role === 'law-firm') navigate('/dashboard');
+  //         else if (role === 'organization') navigate('/organization-dashboard');
+  //         else navigate('/feed');
+  //       }, 1500);
+  //     } catch (err) {
+  //       console.error('Google login error:', err);
 
-        toast.error('Google login failed.', { position: 'top-right' });
-        setLoading(false);
-      }
-    },
-    onError: () => {
-      toast.error('Google login failed.', { position: 'top-right' });
-    },
-  });
+  //       toast.error('Google login failed.', { position: 'top-right' });
+  //       setLoading(false);
+  //     }
+  //   },
+  //   onError: () => {
+  //     toast.error('Google login failed.', { position: 'top-right' });
+  //   },
+  // });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
