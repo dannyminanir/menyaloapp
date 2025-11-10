@@ -102,13 +102,13 @@ export default function LoginPage() {
         toast.success('Login successful!', { position: 'top-right' });
         setTimeout(() => {
           if (role === 'user') {
-            navigate('/feed');
+            navigate('/ai');
           } else if (role === 'law-firm') {
             navigate('/dashboard');
           } else if (role === 'organization') {
             navigate('/organization-dashboard');
           } else {
-            navigate('/feed');
+            navigate('/ai');
           }
         }, 1500);
       } catch (err: any) {

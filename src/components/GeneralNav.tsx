@@ -92,7 +92,7 @@ export default function GeneralNav() {
         >
           Feed
         </Link> */}
-        <Link
+        {/* <Link
           to="/firms"
           className={`font-medium pb-4 block md:inline ${
             location.pathname === '/firms'
@@ -112,7 +112,7 @@ export default function GeneralNav() {
           }`}
         >
           Community
-        </Link>
+        </Link> */}
       </div>
 
       <div className="flex items-center gap-4">

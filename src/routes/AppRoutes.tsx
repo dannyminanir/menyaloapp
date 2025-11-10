@@ -5,7 +5,7 @@ import ForgetPasswordPage from '../pages/Auth/ForgetPasswordPage';
 import VerificationPage from '../pages/Auth/verificationPage';
 import Verification from '../pages/VerificationPage'
 import NewPasswordPage from '../pages/Auth/NewPasswordPage';
-import Feed from '../pages/Feed';
+// import Feed from '../pages/Feed';
 import Userprofile from '../pages/Userprofile';
 import FirmPage from '../pages/FirmPage';
 import FirmProfilePage from '../pages/FirmProfilePage';
@@ -38,14 +38,14 @@ export default function AppRoutes() {
       <Route path="/forget-password" element={<ForgetPasswordPage />} />
       <Route path="/auth-verification" element={<VerificationPage />} />
       <Route path="/new-password" element={<NewPasswordPage />} />
-      <Route
+      {/* <Route
         path="/feed"
         element={
           <ProtectedRoute allowedRoles={['citizen', 'law-firm', 'organization']}>
             <Feed />
           </ProtectedRoute>
         }
-      />
+      /> */}
       <Route path="/user" element={<Userprofile />} />
       <Route path="/firms" element={<FirmPage />} />
       <Route path="/firms/:firmName" element={<FirmProfilePage />} />
