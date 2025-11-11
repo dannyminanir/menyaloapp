@@ -104,7 +104,7 @@ export default function GeneralNav() {
         </Link>
         
         <Link
-          to="/community"
+          to="https://discord.com/invite/nBSVrBUp"
           className={`font-medium pb-4 block md:inline ${
             location.pathname === '/community'
               ? 'text-primary-700'

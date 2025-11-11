@@ -9,7 +9,7 @@ import Feed from '../pages/Feed';
 import Userprofile from '../pages/Userprofile';
 import FirmPage from '../pages/FirmPage';
 import FirmProfilePage from '../pages/FirmProfilePage';
-import CommunityPage from '../pages/CommunityPage';
+// import CommunityPage from '../pages/CommunityPage';
 import AIPage from '../pages/AIPage';
 import LawPage from '../pages/LawPage';
 import Dashboard from '../pages/Dashboard';
@@ -49,7 +49,7 @@ export default function AppRoutes() {
       <Route path="/user" element={<Userprofile />} />
       <Route path="/firms" element={<FirmPage />} />
       <Route path="/firms/:firmName" element={<FirmProfilePage />} />
-      <Route path="/community" element={<CommunityPage />} />
+      {/* <Route path="/community" element={<CommunityPage />} /> */}
       <Route path="/ai" element={<AIPage />} />
       <Route path="/law" element={<LawPage />} />
       <Route

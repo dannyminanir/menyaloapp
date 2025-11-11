@@ -28,26 +28,26 @@ export default function AISideBar({
   onSelectConversation,
 }: AISideBarProps) {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const { data: conversationsData, isLoading } = useGetConversationsQuery();
   const [deleteConversation] = useDeleteConversationMutation();
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [, setLocalConversations] = useState<LocalConversation[]>([]);
 
- const conversations = conversationsData?.data || [];
+  const conversations = conversationsData?.data || [];
 
- useEffect(() => {
-   const loadLocalConversations = () => {
-     const localChats = ChatStorageUtils.getAllConversations();
-     setLocalConversations(localChats);
-   };
+  useEffect(() => {
+    const loadLocalConversations = () => {
+      const localChats = ChatStorageUtils.getAllConversations();
+      setLocalConversations(localChats);
+    };
 
-   loadLocalConversations();
+    loadLocalConversations();
 
-   // Listen for localStorage changes
-   window.addEventListener('storage', loadLocalConversations);
-   return () => window.removeEventListener('storage', loadLocalConversations);
- }, []);
+    // Listen for localStorage changes
+    window.addEventListener('storage', loadLocalConversations);
+    return () => window.removeEventListener('storage', loadLocalConversations);
+  }, []);
 
   //  const allConversations = [...conversations, ...localConversations];
 
@@ -116,10 +116,14 @@ export default function AISideBar({
             New chat
           </button>
 
-          <button className="flex items-center gap-3 text-base md:text-lg font-regular text-gray-600 hover:text-primary-800 transition hover:translate-x-1">
+          <button
+            onClick={() => window.open("https://amategeko.gov.rw/laws/in-force/1?child=1.1", "_blank")}
+            className="flex items-center gap-3 text-base md:text-lg font-regular text-gray-600 hover:text-primary-800 transition hover:translate-x-1"
+          >
             <MdOutlineLibraryBooks className="text-[color:var(--color-primary-800)] text-xl" />
             Library
           </button>
+
 
           <button
             onClick={() => navigate('/chat-history')}
@@ -152,11 +156,10 @@ export default function AISideBar({
                     onSelectConversation(conversation.id);
                     setOpen(false);
                   }}
-                  className={`group flex items-center justify-between p-3 rounded-md cursor-pointer transition-colors ${
-                    currentConversationId === conversation.id
+                  className={`group flex items-center justify-between p-3 rounded-md cursor-pointer transition-colors ${currentConversationId === conversation.id
                       ? 'bg-primary-100 border border-primary-200'
                       : 'hover:bg-gray-100'
-                  }`}
+                    }`}
                 >
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">
